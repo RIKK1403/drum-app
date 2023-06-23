@@ -1,20 +1,92 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+const Snare = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <Text>Snare</Text>
     </View>
   );
-}
+};
+
+const Ride = () => {
+  return (
+    <View>
+      <Text>Ride</Text>
+    </View>
+  );
+};
+
+const Close = () => {
+  return (
+    <View>
+      <Text>Close</Text>
+    </View>
+  );
+};
+
+const Tom = () => {
+  return (
+    <View>
+      <Text>Tom</Text>
+    </View>
+  );
+};
+
+const Splash = () => {
+  return (
+    <View>
+      <Text>Splash</Text>
+    </View>
+  );
+};
+
+const Kick = () => {
+  return (
+    <View>
+      <Text>Kick</Text>
+    </View>
+  );
+};
+
+const Open = () => {
+  return (
+    <View>
+      <Text>Open</Text>
+    </View>
+  );
+};
+
+const Crash = () => {
+  return (
+    <View>
+      <Text>Crash</Text>
+    </View>
+  );
+};
+
+const Stage = () => {
+  return (
+    <View style={styles.container}>
+      <Open />
+      <Crash />
+      <Kick />
+      <Splash />
+      <Tom />
+      <Close />
+      <Ride />
+      <Snare />
+      <Text>Stage</Text>
+    </View>
+  );
+};
+
+export default Stage;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
