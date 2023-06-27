@@ -93,7 +93,6 @@ const Stage = () => {
       <Ride />
       <Snare />
       <Snare2 />
-      <Text>Stage</Text>
     </View>
   );
 };
