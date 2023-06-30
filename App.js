@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Audio } from "expo-av";
 import imageRide from "./images/5ride.png";
 import imageCrash from "./images/1crash.png";
 import imageSnare2 from "./images/7snare2.png";
@@ -9,79 +10,134 @@ import imageOpen from "./images/openh.png";
 import imageTom from "./images/8tom.png";
 import imageSnare from "./images/4snare.png";
 
-const Snare2 = () => {
-  return (
-    <View style={styles.Snare2}>
-      <Image source={imageSnare2} />
-    </View>
-  );
-};
-
-const Snare = () => {
-  return (
-    <View style={styles.Snare}>
-      <Image source={imageSnare} />
-    </View>
-  );
-};
-
-const Ride = () => {
-  return (
-    <View style={styles.ride}>
-      <Image source={imageRide} />
-    </View>
-  );
-};
-
-const Close = () => {
-  return (
-    <View style={styles.close}>
-      <Image source={imageclose} />
-    </View>
-  );
-};
-
-const Tom = () => {
-  return (
-    <View style={styles.Tom}>
-      <Image source={imageTom} />
-    </View>
-  );
-};
-
-const Splash = () => {
-  return (
-    <View style={styles.Splash}>
-      <Image source={imageSplash} />
-    </View>
-  );
-};
-
-const Kick = () => {
-  return (
-    <View style={styles.Kick}>
-      <Image source={imageKick} />
-    </View>
-  );
-};
-
-const Open = () => {
-  return (
-    <View style={styles.Open}>
-      <Image source={imageOpen} />
-    </View>
-  );
-};
-
-const Crash = () => {
-  return (
-    <View style={styles.crash}>
-      <Image source={imageCrash} />
-    </View>
-  );
-};
-
 const Stage = () => {
+  const playsound = async (element) => {
+    switch (element) {
+      case "snare":
+        const { sound } = await Audio.Sound.createAsync(
+          require("./assets/sound/snare.mp3")
+        );
+
+        await sound.playAsync();
+        break;
+      case "ride":
+        //code block
+        break;
+      case "close":
+        //code block
+        break;
+      case "tom":
+        //code block
+        break;
+      case "splash":
+        //code block
+        break;
+      case "kick":
+        //code block
+        break;
+      case "open":
+        //code block
+        break;
+      case "crash":
+        const { suara } = await Audio.Sound.createAsync(
+          require("./assets/sound/snare.mp3")
+        );
+
+        await sound.playAsync();
+        break;
+    }
+  };
+
+  const Snare2 = () => {
+    return (
+      <TouchableOpacity onPress={() => playsound("snare")}>
+        <View style={styles.Snare2}>
+          <Image source={imageSnare2} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Snare = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.Snare}>
+          <Image source={imageSnare} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Ride = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.ride}>
+          <Image source={imageRide} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Close = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.close}>
+          <Image source={imageclose} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Tom = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.Tom}>
+          <Image source={imageTom} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Splash = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.Splash}>
+          <Image source={imageSplash} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Kick = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.Kick}>
+          <Image source={imageKick} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Open = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.Open}>
+          <Image source={imageOpen} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  const Crash = () => {
+    return (
+      <TouchableOpacity>
+        <View style={styles.crash}>
+          <Image source={imageCrash} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <Open />
