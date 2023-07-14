@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import * as ScreenOrientation from "expo-screen-orientation";
 import { Audio } from "expo-av";
 import imageRide from "./images/5ride.png";
 import imageCrash from "./images/1crash.png";
@@ -11,47 +13,81 @@ import imageTom from "./images/8tom.png";
 import imageSnare from "./images/4snare.png";
 
 const Stage = () => {
-  const playsound = async (element) => {
-    switch (element) {
-      case "snare":
-        const { sound } = await Audio.Sound.createAsync(
-          require("./assets/sound/snare.mp3")
-        );
+  const [snare, setSnare] = useState();
+  async function playSnare() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/snare.mp3")
+    );
+    setSnare(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return snare
+      ? () => {
+          snare.unloadAsync();
+        }
+      : undefined;
+  }, [snare]);
 
-        await sound.playAsync();
-        break;
-      case "ride":
-        //code block
-        break;
-      case "close":
-        //code block
-        break;
-      case "tom":
-        //code block
-        break;
-      case "splash":
-        //code block
-        break;
-      case "kick":
-        //code block
-        break;
-      case "open":
-        //code block
-        break;
-      case "crash":
-        const { suara } = await Audio.Sound.createAsync(
-          require("./assets/sound/snare.mp3")
-        );
+  const [ride, setRide] = useState();
+  async function playRide() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/ride.mp3")
+    );
+    setRide(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return ride
+      ? () => {
+          ride.unloadAsync();
+        }
+      : undefined;
+  }, [ride]);
 
-        await sound.playAsync();
-        break;
+  const [close, setCLose] = useState();
+  async function playClose() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/close.mp3")
+    );
+    setCLose(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return close
+      ? () => {
+          close.unloadAsync();
+        }
+      : undefined;
+  }, [close]);
+
+  const [crash, setCrash] = useState();
+  async function playCrash() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/crash.mp3")
+    );
+    setCrash(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return crash
+      ? () => {
+          crash.unloadAsync();
+        }
+      : undefined;
+  }, [crash]);
+
+  useEffect(() => {
+    async function setOrientasi() {
+      await ScreenOrientation.OrientationLock.LANDSCAPE_LEFT;
     }
-  };
+    setOrientasi();
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={styles.crash}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playCrash}>
           <Image source={imageCrash} />
         </TouchableOpacity>
       </View>
@@ -76,22 +112,22 @@ const Stage = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.close}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playClose}>
           <Image source={imageclose} />
         </TouchableOpacity>
       </View>
       <View style={styles.ride}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playRide}>
           <Image source={imageRide} />
         </TouchableOpacity>
       </View>
       <View style={styles.snare}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playSnare}>
           <Image source={imageSnare} />
         </TouchableOpacity>
       </View>
       <View style={styles.snare2}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playSnare}>
           <Image source={imageSnare2} />
         </TouchableOpacity>
       </View>
