@@ -77,6 +77,70 @@ const Stage = () => {
       : undefined;
   }, [crash]);
 
+  const [open, setOpen] = useState();
+  async function playOpen() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/open.mp3")
+    );
+    setOpen(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return open
+      ? () => {
+          open.unloadAsync();
+        }
+      : undefined;
+  }, [open]);
+
+  const [kick, setKick] = useState();
+  async function playKick() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/kick.mp3")
+    );
+    setKick(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return kick
+      ? () => {
+          kick.unloadAsync();
+        }
+      : undefined;
+  }, [kick]);
+
+  const [tom, setTom] = useState();
+  async function playTom() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/tom.mp3")
+    );
+    setTom(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return tom
+      ? () => {
+          tom.unloadAsync();
+        }
+      : undefined;
+  }, [tom]);
+
+  const [splash, setSplash] = useState();
+  async function playSplash() {
+    const { sound } = await Audio.Sound.createAsync(
+      require("./assets/sound/splash.mp3")
+    );
+    setSplash(sound);
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return splash
+      ? () => {
+          splash.unloadAsync();
+        }
+      : undefined;
+  }, [splash]);
+
   useEffect(() => {
     async function setOrientasi() {
       await ScreenOrientation.OrientationLock.LANDSCAPE_LEFT;
@@ -92,22 +156,22 @@ const Stage = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.open}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playOpen}>
           <Image source={imageOpen} />
         </TouchableOpacity>
       </View>
       <View style={styles.kick}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playKick}>
           <Image source={imageKick} />
         </TouchableOpacity>
       </View>
       <View style={styles.splash}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playSplash}>
           <Image source={imageSplash} />
         </TouchableOpacity>
       </View>
       <View style={styles.tom}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={playTom}>
           <Image source={imageTom} />
         </TouchableOpacity>
       </View>
