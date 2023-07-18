@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { Audio } from "expo-av";
 import imageRide from "./images/5ride.png";
